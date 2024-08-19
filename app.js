@@ -12,7 +12,11 @@ As a user, I want to be able to clear all operations and start from 0.
 
 
 
+//FIRST ATTEMPT
+
 /*-------------------------------- Constants --------------------------------*/
+
+/*
 const buttons = document.querySelectorAll('.button');
 const calculator = document.querySelector('#calculator');
 const display = document.querySelector('.display');
@@ -22,7 +26,7 @@ const display = document.querySelector('.display');
 /*------------------------ Cached Element References ------------------------*/
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+/*
 buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
       // This log is for testing purposes to verify we're getting the correct value
@@ -63,3 +67,65 @@ buttons.forEach((button) => {
   });
 });
 /*-------------------------------- Functions --------------------------------*/
+
+//BUGS: Seems fine!
+
+
+
+//SECOND ATTEMPT
+
+
+const buttons = document.querySelectorAll('.button');
+const calculator = document.querySelector('#calculator');
+const display = document.querySelector('.display');
+
+let firstNumber ='';
+let secondNumber ='';
+let operator ='';
+
+buttons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+
+const buttonValue = event.target.innerText;
+    if (display.innerText ==='0') {
+      display.innerText = buttonValue;
+    } else {
+      display.innerText += buttonValue;
+    } if (buttonValue ==='C') {
+      firstNumber = '';
+      secondNumber = '';
+      operator = '';
+      display.innerText = ''; 
+    
+    } if (event.target.classList.contains ('number')) {
+        if (operator ==='') {
+        firstNumber += buttonValue;
+        display.innerText = firstNumber;
+      } else {
+        secondNumber += buttonValue;
+        display.innerText = secondNumber;
+        } 
+    
+    } if (['+', '-', '/', '*'].includes(buttonValue)) {  //must review this code :)
+        operator = buttonValue;
+        
+    
+    } else if (buttonValue === '=') {
+        let result;
+          if (operator ==='+') {
+            result = parseFloat(firstNumber) + parseFloat(secondNumber);
+          } else if (operator ==='-') {
+            result = parseFloat(firstNumber) - parseFloat(secondNumber);
+          } else if (operator ==='/') {
+            result = parseFloat(firstNumber) / parseFloat(secondNumber);
+          } else if (operator ==='*') {
+            result = parseFloat(firstNumber) * (secondNumber);
+          } 
+          display.innerText = result;  
+    }
+
+  });
+});
+
+
+//BUGS: Does not show full sum on display prior to outputting result. Can't compute more than two numbers. 
