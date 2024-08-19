@@ -88,22 +88,22 @@ buttons.forEach((button) => {
 
 const buttonValue = event.target.innerText;
     if (display.innerText ==='0') {
-      display.innerText = buttonValue;
+        display.innerText = buttonValue;
     } else {
-      display.innerText += buttonValue;
+        display.innerText += buttonValue;
     } if (buttonValue ==='C') {
-      firstNumber = '';
-      secondNumber = '';
-      operator = '';
-      display.innerText = ''; 
+        firstNumber = '';
+        secondNumber = '';
+        operator = '';
+        display.innerText = ''; 
     
     } if (event.target.classList.contains ('number')) {
         if (operator ==='') {
-        firstNumber += buttonValue;
-        display.innerText = firstNumber;
-      } else {
-        secondNumber += buttonValue;
-        display.innerText = secondNumber;
+          firstNumber += buttonValue;
+          display.innerText = firstNumber;
+        } else {
+            secondNumber += buttonValue;
+            display.innerText = secondNumber;
         } 
     
     } if (['+', '-', '/', '*'].includes(buttonValue)) {  //must review this code :)
